@@ -115,4 +115,12 @@ button:hover {
     font-size: 0.9rem;
     margin-bottom: 10px;
     display: block;
+
+}
+
+.app-logo {
+    max-width: 150px; /* للتحكم في عرض الشعار */
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
 }
