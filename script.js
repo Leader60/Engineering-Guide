@@ -16,19 +16,20 @@ async function askQuestion() {
                 "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({
-                "model": "deepseek/deepseek-r1:free", // النموذج المجاني
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": "أنت مهندس خبير (Engineering Guide) لديك 40 عاماً من الخبرة. أجب على الأسئلة الهندسية باللغة العربية بأسلوب مهني ودقيق ومختصر."
-                    },
-                    {
-                        "role": "user",
-                        "content": input
-                    }
-                ]
-            })
+                body: JSON.stringify({
+        "model": "meta-llama/llama-3-8b-instruct:free", // هذا هو المسار الصحيح لـ Llama 3 المجاني
+        "messages": [
+            {
+                "role": "system",
+                "content": "أنت مهندس خبير (Engineering Guide) لديك 40 عاماً من الخبرة. أجب على الأسئلة الهندسية باللغة العربية بأسلوب مهني ودقيق ومختصر."
+            },
+            {
+                "role": "user",
+                "content": input
+            }
+        ]
+    })
+// ... باقي الكود ...
         });
 
         const data = await response.json();
