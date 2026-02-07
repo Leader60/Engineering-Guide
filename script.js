@@ -3,7 +3,7 @@ async function askQuestion() {
     const responseDiv = document.getElementById('response');
     
     // تأكد من وضع مفتاحك هنا
-    const OPENROUTER_API_KEY = "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";
+    const OPENROUTER_API_KEY = "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";
 
     if (!input) {
         responseDiv.innerText = "يرجى كتابة سؤالك الهندسي أولاً.";
