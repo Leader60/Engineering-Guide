@@ -199,6 +199,41 @@
             if(c) alert('تم استلام تعليقك.');
         }
     </script>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="">
+</div>
+
+<script>
+    // وظيفة تكبير الصورة عند الضغط
+    document.querySelectorAll('.project-img').forEach(img => {
+        img.onclick = function() {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = this.src;
+        }
+    });
+
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // وظائف الأزرار (إعجاب، مشاركة، تعليق)
+    function toggleLike(btn) {
+        btn.style.color = (btn.style.color === 'red') ? 'var(--gold)' : 'red';
+    }
+
+    function shareProject(name) {
+        const url = window.location.href;
+        alert('مشاركة مشروع: ' + name + '\nرابط الموقع: ' + url);
+    }
+
+    function openComment(id) {
+        let comment = prompt('اكتب تعليقك الهندسي هنا:');
+        if(comment) alert('تم إرسال تعليقك الموقر بنجاح.');
+    }
+</script>
+        
 </body>
 </html>
 
