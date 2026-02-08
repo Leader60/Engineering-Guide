@@ -337,4 +337,37 @@ button:hover {
     }
 }
 
+/* تنسيق أزرار التفاعل (إعجاب، مشاركة، تعليق) */
+.project-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    color: var(--gold);
+    cursor: pointer;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+    padding: 5px;
+}
+
+.action-btn:hover {
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+/* خانة التعليقات الصغيرة */
+.comment-box {
+    width: 100%;
+    margin-top: 10px;
+    display: none; /* مخفية وتظهر عند الضغط على زر تعليق */
+}
 
