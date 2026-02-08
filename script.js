@@ -8,7 +8,7 @@ async function askQuestion() {
 
     // التحقق من النص
     if (!input.value.trim()) {
-        responseDiv.innerText = "يرجى كتابة سؤالك الهندسي أولاً.";
+        responseDiv.innerText = "يرجى كتابة طلبك أو استشارتك أولاً.";
         return;
     }
 
