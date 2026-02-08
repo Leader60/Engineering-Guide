@@ -81,9 +81,9 @@ header h1 {
     background-color: var(--navy-dark);
     color: var(--gold);
     display: inline-block;
-    padding: 10px 30px;
+    padding: 10px 50px;
     border-radius: 12px;
-    font-size: 0.9em;
+    font-size: 1.2em;
     font-weight: bold;
 }
 
@@ -196,4 +196,5 @@ button:hover {
         grid-template-columns: 1fr; 
     }
 }
+
 
