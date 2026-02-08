@@ -1,16 +1,19 @@
 async function askQuestion() {
-    const input = document.getElementById('user-input').value;
-    const responseDiv = document.getElementById('response');
+    // جلب العناصر باستخدام الـ ID الصحيح الموجود في الـ HTML
+    const input = document.getElementById('userQuery');
+    const responseDiv = document.getElementById('answerField');
     
-    // تأكد من وضع مفتاحك هنا
+    // مفتاحك الذي أرفقته (سيعمل الآن لأننا أصلحنا الربط)
     const OPENROUTER_API_KEY = "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";
 
-    if (!input) {
+    // التحقق من النص
+    if (!input.value.trim()) {
         responseDiv.innerText = "يرجى كتابة سؤالك الهندسي أولاً.";
         return;
     }
 
-    responseDiv.innerText = "جاري استشارة المهنس المختص... 🏗️";
+    const userText = input.value;
+    responseDiv.innerText = "جاري استشارة المهندس المختص... 🏗️";
 
     try {
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -18,7 +21,7 @@ async function askQuestion() {
             headers: {
                 "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
                 "Content-Type": "application/json",
-                "HTTP-Referer": "https://leader60.github.io", 
+                "HTTP-Referer": "https://leader60.github.io/Engineering-Guide",
                 "X-Title": "Engineering Guide"
             },
             body: JSON.stringify({
@@ -26,11 +29,11 @@ async function askQuestion() {
                 "messages": [
                     {
                         "role": "system",
-                        "content": "أنت مهندس خبير لديك 40 عاماً من الخبرة. أجب على الأسئلة الهندسية باللغة العربية بأسلوب مهني ودقيق."
+                        "content": "أنت مهندس خبير لديك 40 عاماً من الخبرة. أجب على الأسئلة الهندسية باللغة العربية بأسلوب مهني ودقيق ومختصر."
                     },
                     {
                         "role": "user",
-                        "content": input
+                        "content": userText
                     }
                 ]
             })
@@ -42,11 +45,12 @@ async function askQuestion() {
             const aiReply = data.choices[0].message.content;
             responseDiv.innerText = aiReply;
         } else {
-            responseDiv.innerText = "عذراً، لم أتمكن من الحصول على رد حالياً. حاول مرة أخرى.";
+            console.error("OpenRouter Error:", data);
+            responseDiv.innerText = "عذراً، النموذج المجاني مشغول حالياً. حاول مرة أخرى بعد قليل.";
         }
 
     } catch (error) {
-        console.error("Error:", error);
-        responseDiv.innerText = "حدث خطأ في الاتصال. تأكد من إعدادات المفتاح والإنترنت.";
+        console.error("Connection Error:", error);
+        responseDiv.innerText = "حدث خطأ في الاتصال. تأكد من الإنترنت.";
     }
 }
