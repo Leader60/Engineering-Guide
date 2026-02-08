@@ -4,13 +4,12 @@ async function askQuestion() {
     const query = document.getElementById('userQuery').value;
     const responseField = document.getElementById('answerField');
 
-    // التأكد من ملء البيانات
     if (!name.trim() || !email.trim() || !query.trim()) {
-        responseField.innerHTML = "<span style='color: #d44c4c;'>⚠️ يرجى تعبئة كافة الحقول المطلوبة (الاسم، البريد، السؤال).</span>";
+        responseField.innerHTML = "<span style='color: #d44c4c;'>⚠️ يرجى تعبئة كافة الحقول (الاسم، البريد، السؤال).</span>";
         return;
     }
 
-    responseField.innerHTML = "جاري تحليل الطلب وإعداد الرد الأولي... 🏗️";
+    responseField.innerHTML = "جاري تحليل طلبكم ودراسته لإعداد الرد الأولي... 🏗️";
 
     try {
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -24,22 +23,21 @@ async function askQuestion() {
             body: JSON.stringify({
                 "model": "deepseek/deepseek-chat:free",
                 "messages": [
-                    { "role": "system", "content": "أنت مهندس خبير بمؤهلات عالية. أجب بدقة واحترافية باللغة العربية الفصحى." },
+                    { "role": "system", "content": "أنت مهندس خبير. أجب باحترافية باللغة العربية." },
                     { "role": "user", "content": query }
                 ]
             })
         });
 
         const data = await response.json();
-        let aiReply = (data.choices && data.choices[0]) ? data.choices[0].message.content : "عذراً يوجد ضغط كبير على الموقع حالياً، سننتقل مباشرة لتدقيق الخبراء.";
+        let aiReply = (data.choices && data.choices[0]) ? data.choices[0].message.content : "يوجد ضغط كبير على الموقع حالياً، سننقل طلبكم مباشرة إلى قسم الخبراء.";
 
-        // عرض النتيجة النهائية بالأسلوب المعتمد
         responseField.innerHTML = `
             <div style="color: #2e7d32; font-weight: bold; margin-bottom: 15px;">✅ تم استلام طلبك بنجاح يا ${name}</div>
-            <div style="text-align: right; border: 1px dashed #ccc; padding: 15px; background: #fafafa; margin-bottom: 15px;">
+            <div style="text-align: center; border: 1px dashed #ccc; padding: 15px; background: #fafafa; margin-bottom: 15px;">
                 <strong>التحليل الأولي المبدئي:</strong><br>${aiReply}
             </div>
-            <div style="background: #fff3cd; color: #856404; padding: 10px; border-radius: 5px; font-size: 0.95em;">
+            <div class="audit-notice">
                 <strong>📝 إشعار التدقيق:</strong><br>
                 يتم الآن مراجعة هذه النتائج من قبل فريقنا الهندسي المعتمد. 
                 <br>سيصلك التقرير النهائي المدقق إلى عنوان بريدك الإلكتروني: <strong>(${email})</strong> في أقرب وقت ممكن.
@@ -47,7 +45,6 @@ async function askQuestion() {
         `;
 
     } catch (error) {
-        console.error("Error:", error);
-        responseField.innerHTML = "المعذرة حدث خطأ غير متوقع. لا تقلق، لقد تم تسجيل طلبك وسنتواصل معك عبر البريد الإلكتروني.";
+        responseField.innerHTML = "المعذرة حدث خطأ غير متوقع. لقد تم تسجيل طلبكم وسنتواصل معكم عبر البريد الإلكتروني.";
     }
 }
