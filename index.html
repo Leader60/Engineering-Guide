@@ -10,12 +10,15 @@
 <body>
 
 <header>
-    <img src="logo.png" alt="Engineering Guide Logo" class="app-logo" style="max-height: 80px;">
+    <img src="logo.png" alt="Engineering Guide Logo" class="app-logo-circular">
+    
     <h1>Engineering Guide</h1>
     <h2 class="arabic-title">دليل الهندسة</h2> 
-    <div class="services" style="color: #0a192f; margin: 10px 0; font-weight: bold;">
+    
+    <div class="services">
         <span>تصميم</span> • <span>دراسة</span> • <span>تنفيذ</span> • <span>إشراف</span> • <span>استشارات</span>
     </div>
+    
     <div class="experience-badge">خبرة تزيد عن 40 عاماً</div>
 </header>
 
@@ -27,19 +30,19 @@
                 <input type="text" id="userName" placeholder="اكتب الاسم هنا">
             </div>
             <div class="info-field">
-                <label>البريد الإلكتروني</label>
+                <label>اعنوان البريد الإلكتروني</label>
                 <input type="email" id="userEmail" placeholder="email@example.com">
             </div>
         </div>
 
-        <label for="userQuery">تفاصيل الاستشارة الهندسية</label>
-        <textarea id="userQuery" rows="6" placeholder="اكتب من فضلك، تفاصيل طلبك هنا ليتم تحليله ودراسته..."></textarea>
+        <label for="userQuery">تفاصيل الطلب أو الاستشارة الهندسية</label>
+        <textarea id="userQuery" rows="6" placeholder="اكتب من فضلك، تفاصيل طلبك هنا ليتم دراسته وتجهيز الرد..."></textarea>
         
-        <button onclick="askQuestion()">إرسال الطلب أو الاستشارة</button>
+        <button onclick="askQuestion()">إرسل الطلب من فضلك</button>
 
         <div class="response-area" id="responseContainer">
-            <span class="response-label" style="font-weight: bold; display: block; margin-bottom: 10px;">حالة الاستشارة:</span>
-            <div id="answerField">بانتظار بياناتكم اتزويدنا بطلبكم..</div>
+            <span class="response-label" style="font-weight: bold; display: block; margin-bottom: 10px;">حالة الطلب:</span>
+            <div id="answerField">بانتظار تزويدنا بالبيانات لنبدأ دراسة طلبكم..</div>
         </div>
     </div>
 </div>
@@ -51,4 +54,3 @@
 </script>
 </body>
 </html>
-
