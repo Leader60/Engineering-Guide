@@ -5,41 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engineering Guide | دليل الهندسة</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-   <header>
-    <img src="logo.png" alt="Engineering Guide Logo" class="app-logo">
+<header>
+    <img src="logo.png" alt="Engineering Guide Logo" class="app-logo" style="max-height: 80px;">
     <h1>Engineering Guide</h1>
     <h2 class="arabic-title">دليل الهندسة</h2> 
-    <div class="services">
+    <div class="services" style="color: #0a192f; margin: 10px 0; font-weight: bold;">
         <span>تصميم</span> • <span>دراسة</span> • <span>تنفيذ</span> • <span>إشراف</span> • <span>استشارات</span>
     </div>
     <div class="experience-badge">خبرة تزيد عن 40 عاماً</div>
 </header>
 
-    <div class="container">
-        <div class="chat-section">
-            <label for="userQuery">أكتب طلبك أو استشارتك حول أي موضوع في كافة الفروع والتخصصات الهندسية:</label>
-            <textarea id="userQuery" placeholder="مثال: أريد تصميم ... دراسة ... استشارة ... حول..."></textarea>
-            <button onclick="askQuestion()">أرسل من فضلك</button>
-
-            <div class="response-area">
-                <span class="response-label">رد المستشار الهندسي المختص:</span>
-                <div id="answerField">بانتظار وصول طلبك أو استفسارك ... سيظهر الرد هنا فوراً.</div>
+<div class="container">
+    <div class="chat-section">
+        <div class="user-info-grid">
+            <div class="info-field">
+                <label>الاسم الكامل</label>
+                <input type="text" id="userName" placeholder="اكتب اسمك هنا">
+            </div>
+            <div class="info-field">
+                <label>البريد الإلكتروني</label>
+                <input type="email" id="userEmail" placeholder="email@example.com">
             </div>
         </div>
-    </div>
 
-    <script src="script.js"></script>
-    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-    <script>
-        if (window.Pi) {
-            Pi.init({ version: "2.0", sandbox: true });
-        }
-    </script>
+        <label for="userQuery">تفاصيل الاستشارة الهندسية</label>
+        <textarea id="userQuery" rows="6" placeholder="اكتب من فضلك، تفاصيل طلبك هنا ليتم تحليله ودراسته..."></textarea>
+        
+        <button onclick="askQuestion()">إرسال الطلب أو الاستشارة</button>
+
+        <div class="response-area" id="responseContainer">
+            <span class="response-label" style="font-weight: bold; display: block; margin-bottom: 10px;">حالة الاستشارة:</span>
+            <div id="answerField">بانتظار بياناتكم اتزويدنا بطلبكم..</div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<script>
+    if (window.Pi) { Pi.init({ version: "2.0", sandbox: true }); }
+</script>
 </body>
 </html>
-
-
-
