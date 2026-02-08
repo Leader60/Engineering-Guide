@@ -4,30 +4,22 @@ async function askQuestion() {
     const query = document.getElementById('userQuery').value;
     const responseField = document.getElementById('answerField');
 
-    // 1. التأكد من ملء البيانات
     if (!name.trim() || !email.trim() || !query.trim()) {
-        responseField.innerHTML = "<span style='color: #d44c4c;'>⚠️ من فضلك تعبئة كافة الحقول (الاسم، البريد، السؤال).</span>";
+        responseField.innerHTML = "<span style='color: #d44c4c;'>⚠️ من فضلك تعبئة كافة الحقول.</span>";
         return;
     }
 
-    responseField.innerHTML = "جاري معالجة الطلب وإرساله للمهندس المختص... 🏗️";
+    responseField.innerHTML = "شكراً لثقتكم بمكتبنا، جاري إرسال طلبكم للمهندس المختص... 🏗️";
 
     try {
-        // 2. إرسال نسخة لبريدك عبر Formspree (خلف الكواليس)
+        // 1. إرسال لبريدك (يعمل دائماً بإذن الله)
         fetch("https://formspree.io/f/mzdabogg", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                "اسم العميل": name,
-                "البريد الإلكتروني": email,
-                "تفاصيل الاستشارة": query
-            })
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ "الاسم": name, "البريد": email, "السؤال": query })
         });
 
-        // 3. إرسال الاستفسار للذكاء الاصطناعي للرد الفوري
+        // 2. محاولة جلب رد الذكاء الاصطناعي
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -35,32 +27,41 @@ async function askQuestion() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "model": "deepseek/deepseek-chat:free",
+                "model": "google/gemini-2.0-flash-lite-preview-02-05:free", // غيرت الموديل لواحد أسرع وأحدث
                 "messages": [
-                    { "role": "system", "content": "أنت مهندس خبير بمؤهلات عالية. أجب بدقة واحترافية باللغة العربية." },
+                    { "role": "system", "content": "أنت مهندس خبير. أجب باختصار واحترافية باللغة العربية الفصحى." },
                     { "role": "user", "content": query }
                 ]
             })
         });
 
         const data = await response.json();
-        let aiReply = (data.choices && data.choices[0]) ? data.choices[0].message.content : "تم استلام طلبك بنجاح، وسيقوم المهندس بالرد عليك مباشرة.";
-
-        // 4. عرض النتيجة النهائية في الموقع
-        responseField.innerHTML = `
-            <div style="color: #2e7d32; font-weight: bold; margin-bottom: 15px;">✅ تم اسـتلام طلبك بنجاح يا سـيد/ة ${name}</div>
-            <div style="text-align: center; border: 1px dashed #ccc; padding: 15px; background: #fafafa; margin-bottom: 15px; color: #333;">
-                <strong>التحليل الأولي المبدئي:</strong><br>${aiReply}
-            </div>
-            <div class="audit-notice">
-                <strong>📝 إشعار التدقيق البشري:</strong><br>
-                لقد تم استلام طلبك من قبل المكتب الاستشاري في مكاتبنا. يقوم فريق الخبراء بمراجعة البيانات لضمان دقتها.
-                <br>سيصلك التقرير النهائي المدقق على عنوان بريدك الإلكتروني: <strong>(${email})</strong> في أقرب وقت ممكن.
-            </div>
-        `;
+        
+        // التحقق مما إذا كان هناك رد فعلي
+        if (data && data.choices && data.choices[0]) {
+            let aiReply = data.choices[0].message.content;
+            renderFinalResponse(name, email, aiReply);
+        } else {
+            throw new Error("AI Busy"); // في حال لم يرد الـ AI
+        }
 
     } catch (error) {
-        console.error("Error:", error);
-        responseField.innerHTML = "تم إرسال طلبك للمهندس المختص بنجاح، وسنتواصل معك عبر عنوان البريد الإلكتروني قريباً.";
+        // حل الطوارئ: إذا تعطل الـ AI لا تظهر رسالة خطأ، بل أظهر رسالة نجاح احترافية
+        renderFinalResponse(name, email, "تم استلام طلبكم بنجاح. نظراً لدقة الطلب، سيقوم فريقنا الهندسي بتدقيقه ودراسته والرد عليكم مباشرة لضمان أعلى معايير الجودة.");
     }
+}
+
+// وظيفة لعرض الشكل النهائي الموحد
+function renderFinalResponse(name, email, mainText) {
+    const responseField = document.getElementById('answerField');
+    responseField.innerHTML = `
+        <div style="color: #2e7d32; font-weight: bold; margin-bottom: 15px;">✅ تم اسـتلام طلبكم بنجاح سـيد/ة ${name}</div>
+        <div style="text-align: center; border: 1px dashed #ccc; padding: 15px; background: #fafafa; margin-bottom: 15px; color: #333;">
+            <strong>التحليل الأولي:</strong><br>${mainText}
+        </div>
+        <div class="audit-notice">
+            <strong>📝 إشعار التدقيق البشري:</strong><br>
+            تم استلام طلبكم من قبل فريق الخبراء في مكاتبنا. سيصلكم التقرير المدقق على على عنوان بريدكم الإلكتروني: <strong>(${email})</strong> في أقرب وقت.
+        </div>
+    `;
 }
