@@ -63,7 +63,18 @@
     <a href="privacy.html" style="color: var(--gold); margin-left: 15px;">سياسة الخصوصية</a>
     <a href="disclaimer.html" style="color: var(--gold);">إخلاء المسؤولية</a>
 </footer>
-    <div class="side-social-bar" style="position: fixed; right: 20px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; z-index: 1000;">
+    <div class="side-social-bar" <div class="side-social-bar" style="
+    position: fixed; 
+    /* تحريك الأزرار لتكون قريبة من المحتوى بدل حافة الشاشة */
+    right: calc(50% - 640px); 
+    top: 50%; 
+    transform: translateY(-50%); 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    z-index: 1000;
+">
+    </div>
     
     <button onclick="toggleLikeSide()" id="sideLikeBtn" style="background: white; border: 2px solid #d4af37; color: #d4af37; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;">
         <i class="far fa-heart" id="sideHeartIcon"></i>
@@ -97,7 +108,7 @@
         if (navigator.share) {
             navigator.share({
                 title: 'Engineering Guide',
-                text: 'اطلع على خدمات مكتب Engineering Guide للاستشارات الهندسية في الكويت',
+                text: 'اطلع على خدمات موقعنا Engineering Guide للاستشارات الهندسية ',
                 url: window.location.href
             });
         } else {
@@ -107,6 +118,7 @@
 </script>
 </body>
 </html>
+
 
 
 
