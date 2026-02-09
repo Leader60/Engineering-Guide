@@ -100,19 +100,19 @@ header h1 {
 }
 
 .experience-badge {
-    background-color: #001f3f;
+    background-color: #2a3d5a;
     color: var(--gold);
     display: inline-block;
-    padding: 40px 50px;
+    padding: 20px 80px;
     border-radius: 12px;
-    font-size: 1.2em;
+    font-size: 1.4em;
     font-weight: bold;
 }
 
 /* حاوية المحتوى الرئيسي */
 .container {
     max-width: 1100px; /* العرض المثالي للمحتوى */
-    margin: 0 auto;    /* أهم سطر: لتوسيط المحتوى في منتصف الشاشة */
+    margin: 25px auto 25px auto;    /* أهم سطر: لتوسيط المحتوى في منتصف الشاشة */
     padding: 20px;     /* مسافة أمان جانبية للشاشات الصغيرة */
 }
 
@@ -580,6 +580,7 @@ header nav {
     gap: 20px;
     list-style: none;
 }
+
 
 
 
