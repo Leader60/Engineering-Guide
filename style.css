@@ -89,11 +89,9 @@ header h1 {
 
 /* حاوية المحتوى الرئيسي */
 .container {
-    max-width: 850px;
-    margin: -50px auto 30px auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 20;
+    max-width: 1100px; /* العرض المثالي للمحتوى */
+    margin: 0 auto;    /* أهم سطر: لتوسيط المحتوى في منتصف الشاشة */
+    padding: 20px;     /* مسافة أمان جانبية للشاشات الصغيرة */
 }
 
 .chat-section {
@@ -518,4 +516,5 @@ button:hover {
         grid-template-columns: 1fr;
     }
 }
+
 
