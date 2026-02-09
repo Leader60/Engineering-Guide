@@ -60,10 +60,24 @@ body::before {
 header {
     background-color: var(--header-bg);
     color: var(--text-dark);
-    padding: 40px 20px 80px 20px; /* زيادة الحشو لتناسب حجم الشعار الجديد */
-    text-align: center;
+    padding: 15px 30px; /* تقليل الحشو ليتناسب مع التوزيع العرضي */
     border-bottom: 4px solid var(--gold);
     position: relative;
+    
+    /* هذا هو الجزء السحري للتوزيع */
+    display: flex;
+    justify-content: space-between; /* يدفع القائمة لليمين والكلمة لليسار */
+    align-items: center; /* يوازنهم في المنتصف شاقولياً */
+    direction: rtl; /* لضمان أن اليمين هو نقطة البداية */
+}
+
+/* تنسيق القائمة لضمان ظهورها بشكل أفقي مرتب */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 15px; /* المسافة بين روابط القائمة */
+    margin: 0;
+    padding: 0;
 }
 
 /* الشعار الدائري بعد التكبير */
@@ -557,6 +571,7 @@ button:hover {
     }
 }
 </style>
+
 
 
 
