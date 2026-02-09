@@ -15,31 +15,27 @@
     padding: 0; 
 }
 
-/* 1. تعديل الـ body لجعل الخلفية بيضاء وتوسيط المحتوى */
 body {
     font-family: 'Cairo', sans-serif;
-    background-color: #ffffff; /* تغيير الخلفية الخارجية للأبيض */
-    color: var(--white);
-    line-height: 1.6;
-    overflow-x: hidden;
+    background-color: #ffffff; /* الهوامش بيضاء */
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center; /* هذا السطر هو سر توسيط الموقع */
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* 2. إضافة حاوية المحتوى (التي ستحمل اللون الكحلي) */
+/* 2. الحاوية الكحلية - نستخدم margin: auto لتوسيطها بدلاً من الـ flex */
 .page-wrapper {
     width: 100%;
-    max-width: 1100px; /* العرض الذي طلبته */
-    background-color: var(--navy-dark); /* اللون الكحلي يصبح هنا فقط */
+    max-width: 1100px; /* العرض المطلوب */
+    margin: 0 auto;    /* هذا السطر سيقوم بتوسيط الموقع بأمان */
+    background-color: #001f3f; /* اللون الكحلي الخاص بك */
     min-height: 100vh;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2); /* ظل لإبراز الحدود */
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
     position: relative;
-    /* نضمن أن المحتوى يبدأ من اليمين لليسار */
-    direction: rtl; 
+    color: white;
+    direction: rtl; /* لضمان اتجاه الكتابة الصحيح */
 }
-
 
 /* الشريط العلوي الذهبي */
 body::before {
@@ -553,6 +549,7 @@ button:hover {
     }
 }
 </style>
+
 
 
 
