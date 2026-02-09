@@ -60,7 +60,7 @@ body::before {
 header {
    background-color: var(--header-bg);
     color: var(--text-dark);
-    padding: 40px 20px 20px 20px; /* زيادة الحشو لتناسب حجم الشعار الجديد */
+    padding: 40px 20px 30px 20px; /* زيادة الحشو لتناسب حجم الشعار الجديد */
     text-align: center;
     border-bottom: 4px solid var(--gold);
     position: relative;
@@ -580,6 +580,7 @@ header nav {
     gap: 20px;
     list-style: none;
 }
+
 
 
 
