@@ -100,10 +100,10 @@ header h1 {
 }
 
 .experience-badge {
-    background-color: var(--navy-dark);
+    background-color: #001f3f;
     color: var(--gold);
     display: inline-block;
-    padding: 10px 50px;
+    padding: 40px 50px;
     border-radius: 12px;
     font-size: 1.2em;
     font-weight: bold;
@@ -580,6 +580,7 @@ header nav {
     gap: 20px;
     list-style: none;
 }
+
 
 
 
