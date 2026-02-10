@@ -581,5 +581,27 @@ header nav {
     list-style: none;
 }
 
+.header-side-photo {
+    position: absolute;
+    /* هذا التعديل يضع الصور في المسافة الفاصلة بمحاذاة الصندوق تماماً */
+    bottom: 35px;         /* المسافة من أسفل الـ header ليتماشى مع الصندوق */
+    width: 65px;          /* حجم مماثل للشعار */
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    object-fit: cover;
+    z-index: 5;           /* لكي لا تختفي خلف العناصر */
+}
+
+/* التمركز في أقصى اليسار */
+.left-edge {
+    left: 5%;             /* مسافة بسيطة من حافة الصفحة اليسرى */
+}
+
+/* التمركز في أقصى اليمين */
+.right-edge {
+    right: 5%;            /* مسافة بسيطة من حافة الصفحة اليمنى */
+}
+
 
 
