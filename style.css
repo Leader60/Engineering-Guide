@@ -584,9 +584,9 @@ header nav {
 .header-side-photo {
     position: absolute;
     /* هذا التعديل يضع الصور في المسافة الفاصلة بمحاذاة الصندوق تماماً */
-    bottom: 35px;         /* المسافة من أسفل الـ header ليتماشى مع الصندوق */
-    width: 90px;          /* حجم مماثل للشعار */
-    height: 90px;
+    bottom: 15px;         /* المسافة من أسفل الـ header ليتماشى مع الصندوق */
+    width: 120px;          /* حجم مماثل للشعار */
+    height: 120px;
     border-radius: 50%;
     border: 2px solid var(--gold);
     object-fit: cover;
@@ -652,6 +652,7 @@ header nav {
     
     /* إذا كنت مصراً على بقائها، سنضعها تحت الصندوق وليس بجانبه */
 }
+
 
 
 
