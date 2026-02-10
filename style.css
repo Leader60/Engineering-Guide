@@ -605,40 +605,52 @@ header nav {
 
 /* الكود الشامل لتصغير كل عناصر الهيدر على الموبايل */
 @media (max-width: 768px) {
-    /* 1. اسم الموقع */
-    .logo-text, .brand-name, header h1 { 
-        font-size: 1rem !important; 
+    /* منع أي عنصر من الخروج عن حدود الشاشة نهائياً */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* 2. القائمة الرئيسية (الروابط) */
+    /* 1. تصغير العنوان الذهبي الكبير */
+    header h1, .الدليل-الهندسي { 
+        font-size: 1.5rem !important; 
+        width: 100% !important;
+        text-align: center;
+    }
+
+    /* 2. إصلاح القائمة الزرقاء (التي تظهر مقصوصة في الصورة) */
     nav ul {
-        padding: 0 !important;
-        display: flex;
-        justify-content: center;
-        gap: 10px; /* تقليل المسافة بين الأزرار */
+        display: flex !important;
+        flex-wrap: wrap !important; /* تجعل الأزرار تنزل لسطر جديد إذا لم تكفِ المساحة */
+        justify-content: center !important;
+        padding: 10px 0 !important;
+        gap: 5px !important;
     }
 
     nav ul li a {
-        font-size: 0.8rem !important; /* تصغير حجم خط الأزرار */
+        font-size: 0.8rem !important;
         padding: 5px 8px !important;
     }
 
-    /* 3. صندوق الخبرة */
+    /* 3. صندوق الخبرة (إجباره على البقاء في المنتصف) */
     .experience-badge {
-        font-size: 0.85rem !important; 
-        padding: 8px 15px !important; 
-        margin: 20px auto !important; /* الحفاظ على التوسط والمسافة */
-        width: 80% !important; 
+        width: 90% !important; /* يشغل أغلب عرض الشاشة دون الخروج عنها */
+        max-width: 300px !important;
+        font-size: 0.8rem !important;
+        padding: 10px !important;
+        margin: 20px auto !important; /* توسط تلقائي */
         display: block !important;
     }
 
-    /* 4. الصور الجانبية */
-    .header-side-photo {
-        width: 35px !important;
-        height: 35px !important;
-        bottom: 15px !important; /* محاذاة الصور مع الصندوق الصغير */
+    /* 4. الصور الجانبية (إخفاؤها على الموبايل لضمان نظافة التنسيق) */
+    /* الصور على الجوانب في شاشة صغيرة جداً تفسد التصميم دائماً */
+    .header-side-photo, .side-photo, .fixed-side-photo {
+        display: none !important; 
     }
+    
+    /* إذا كنت مصراً على بقائها، سنضعها تحت الصندوق وليس بجانبه */
 }
-
 
 
