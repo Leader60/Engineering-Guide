@@ -845,6 +845,59 @@ header nav {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
+/* تنسيق قسم المراجع */
+.references-section {
+    margin-top: 50px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05); /* خلفية بيضاء شفافة جداً */
+    border-radius: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.ref-title {
+    color: #d4af37;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #d4af37;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* تنسيق الجدول */
+.ref-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: #ffffff;
+    text-align: right;
+}
+
+.ref-table th {
+    background-color: rgba(212, 175, 55, 0.2); /* ذهبي شفاف للعناوين */
+    color: #d4af37;
+    padding: 12px;
+    border-bottom: 2px solid #d4af37;
+}
+
+.ref-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.95rem;
+}
+
+/* تأثير عند تمرير الماوس على الصفوف */
+.ref-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+}
+
+/* جعل الجدول متوافق مع الشاشات الصغيرة */
+@media (max-width: 600px) {
+    .ref-table {
+        font-size: 0.8rem;
+    }
+}
+
 
 
 
