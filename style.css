@@ -1114,11 +1114,12 @@ header nav {
     border-top: 1px solid #eee;
 }
 
-.arabic-content {
-  direction: rtl;
-  text-align: justify; /* يجعل حواف النص متساوية ومنظمة بشكل احترافي */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خطوط واضحة للمقالات الهندسية */
+/* لتنسيق جميع النصوص في الموقع */
+body, p, h1, h2, h3, h4, h5, h6, div, article, section, main, .entry-content, .post-content {
+    text-align: justify;
+    direction: rtl; /* إذا كان الموقع عربياً */
 }
+
 
 
 
