@@ -1114,6 +1114,9 @@ header nav {
     border-top: 1px solid #eee;
 }
 
+body:not([class*="index"]) {
+    padding-top: 40px;
+}
 
 
 
