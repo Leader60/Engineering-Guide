@@ -803,8 +803,8 @@ header nav {
 
 .article-intro {
     text-align: right;
-    font-size: 1.3rem;
-    color: #ffd300;      /* اللون الذهبي للمقدمة لجذب الانتباه */
+    font-size: 1.2rem;
+    color: #d4af37;      /* اللون الذهبي للمقدمة لجذب الانتباه */
     margin-top: 20px;
     margin-bottom: 20px;
     font-weight: 600;
@@ -1113,6 +1113,7 @@ header nav {
     padding-top: 5px;
     border-top: 1px solid #eee;
 }
+
 
 
 
